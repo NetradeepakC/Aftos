@@ -24,6 +24,16 @@ abstract class _DarkColors {
   static const card = AppColors.cardDark;
 }
 
+defaultTextStyle(BuildContext context){
+  ThemeData mode = Theme.of(context);
+  bool darkMode=mode.brightness==Brightness.dark;
+  return TextStyle(color: darkMode?AppColors.textLight:AppColors.textDark);
+}
+
+defaultText(BuildContext context, String str){
+  return Text(str, style: defaultTextStyle(context),);
+}
+
 /// Reference to the application theme.
 abstract class AppTheme {
   static const accentColor = AppColors.accent;

@@ -19,7 +19,11 @@ class HomeScreen extends StatelessWidget {
         title: const Center(child: Text("Test AppBar")),
       ),
       body: pages[0],
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(
+        onButtonPressed: (index){
+          print(index);
+        },
+      ),
     );
   }
 }
