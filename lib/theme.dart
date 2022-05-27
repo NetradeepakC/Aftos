@@ -24,14 +24,24 @@ abstract class _DarkColors {
   static const card = AppColors.cardDark;
 }
 
-defaultTextStyle(BuildContext context){
+defaultTextStyle(BuildContext context) {
   ThemeData mode = Theme.of(context);
-  bool darkMode=mode.brightness==Brightness.dark;
-  return TextStyle(color: darkMode?AppColors.textLight:AppColors.textDark);
+  bool darkMode = mode.brightness == Brightness.dark;
+  return TextStyle(color: darkMode ? AppColors.textLight : AppColors.textDark);
 }
 
-defaultText(BuildContext context, String str){
-  return Text(str, style: defaultTextStyle(context),);
+defaultText(BuildContext context, String str) {
+  return Text(
+    str,
+    style: defaultTextStyle(context),
+  );
+}
+
+buttonStyle() {
+  return MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(18.0),
+  ));
 }
 
 /// Reference to the application theme.
@@ -41,35 +51,37 @@ abstract class AppTheme {
 
   /// Light theme and its settings.
   static ThemeData light(ThemeData theme) => ThemeData(
-    colorScheme: theme.colorScheme.copyWith(
-      secondary: accentColor,
-      brightness: Brightness.light,),
-    visualDensity: visualDensity,
-    textTheme: GoogleFonts.mulishTextTheme(theme.textTheme)
-        .apply(bodyColor: AppColors.textDark),
-    backgroundColor: _LightColors.background,
-    scaffoldBackgroundColor: _LightColors.background,
-    cardColor: _LightColors.card,
-    primaryTextTheme: const TextTheme(
-      headline6: TextStyle(color: AppColors.textDark),
-    ),
-    iconTheme: const IconThemeData(color: AppColors.iconDark),
-  );
+        colorScheme: theme.colorScheme.copyWith(
+          secondary: accentColor,
+          brightness: Brightness.light,
+        ),
+        visualDensity: visualDensity,
+        textTheme: GoogleFonts.mulishTextTheme(theme.textTheme)
+            .apply(bodyColor: AppColors.textDark),
+        backgroundColor: _LightColors.background,
+        scaffoldBackgroundColor: _LightColors.background,
+        cardColor: _LightColors.card,
+        primaryTextTheme: const TextTheme(
+          headline6: TextStyle(color: AppColors.textDark),
+        ),
+        iconTheme: const IconThemeData(color: AppColors.iconDark),
+      );
 
   /// Dark theme and its settings.
   static ThemeData dark(ThemeData theme) => ThemeData(
-    colorScheme: theme.colorScheme.copyWith(
-      secondary: accentColor,
-      brightness: Brightness.dark,),
-    visualDensity: visualDensity,
-    textTheme: GoogleFonts.interTextTheme(theme.textTheme)
-        .apply(bodyColor: AppColors.textLight),
-    backgroundColor: _DarkColors.background,
-    scaffoldBackgroundColor: _DarkColors.background,
-    cardColor: _DarkColors.card,
-    primaryTextTheme: const TextTheme(
-      headline6: TextStyle(color: AppColors.textLight),
-    ),
-    iconTheme: const IconThemeData(color: AppColors.iconLight),
-  );
+        colorScheme: theme.colorScheme.copyWith(
+          secondary: accentColor,
+          brightness: Brightness.dark,
+        ),
+        visualDensity: visualDensity,
+        textTheme: GoogleFonts.interTextTheme(theme.textTheme)
+            .apply(bodyColor: AppColors.textLight),
+        backgroundColor: _DarkColors.background,
+        scaffoldBackgroundColor: _DarkColors.background,
+        cardColor: _DarkColors.card,
+        primaryTextTheme: const TextTheme(
+          headline6: TextStyle(color: AppColors.textLight),
+        ),
+        iconTheme: const IconThemeData(color: AppColors.iconLight),
+      );
 }

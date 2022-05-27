@@ -1,5 +1,6 @@
 import 'package:aftos/navigation.dart';
 import 'package:aftos/pages/pages.dart';
+import 'package:aftos/theme.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,8 +9,9 @@ class HomeScreen extends StatefulWidget {
   final pages = [
     Chats(),
     Events(),
-    Feed(),
+    Friends(),
     Groups(),
+    Settings(),
   ];
 
   @override
@@ -26,8 +28,12 @@ class HomeScreenState extends State<HomeScreen> {
     for (var i in widget.pages) {
       i.initData();
     }
+    ThemeData mode = Theme.of(context);
+    bool darkMode = mode.brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: (darkMode) ? AppColors.cardLight : AppColors.cardDark,
+        foregroundColor: (darkMode) ? AppColors.textDark : AppColors.textLight,
         title: const Center(child: Text("Aftos")),
       ),
       body: widget.pages[i],

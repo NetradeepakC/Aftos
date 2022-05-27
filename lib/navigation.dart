@@ -1,8 +1,9 @@
 import 'package:aftos/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-double buttonHeight = 55;
+const vpadHeight = 5.0;
+const hpadWidth = 30.0;
+const buttonHeight = 53.0;
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -20,12 +21,13 @@ class BottomNavBar extends StatelessWidget {
   List<Widget> padButtons(List<Widget> barButtons) {
     List<Widget> newList = [];
     SizedBox hpad = const SizedBox(
-      width: 45,
+      width: hpadWidth,
     );
     for (Widget i in barButtons) {
       newList.add(hpad);
       newList.add(i);
     }
+    newList.add(hpad);
     return newList;
   }
 
@@ -42,10 +44,12 @@ class BottomNavBar extends StatelessWidget {
       child: Container(
         color: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
         child: SizedBox(
-          height: buttonHeight,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: padButtons(barButtons),
+          height: buttonHeight + 2 * vpadHeight,
+          child: Scrollbar(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: padButtons(barButtons),
+            ),
           ),
         ),
       ),
@@ -87,25 +91,45 @@ class NavBarButtonState extends State<NavBarButton> {
       firstLoad = false;
       setState(() {});
     }
-    return GestureDetector(
-        onTap: () {
-          widget.onTap(index);
-        },
-        child: SizedBox(
-          height: buttonHeight,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                height: 5,
-              ),
-              Icon(widget.iconData),
-              const SizedBox(
-                height: 2,
-              ),
-              defaultText(context, widget.label),
-            ],
+    ThemeData mode = Theme.of(context);
+    bool darkMode = mode.brightness == Brightness.dark;
+    SizedBox vpad = const SizedBox(height: vpadHeight);
+    return Column(
+      children: [
+        vpad,
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                (darkMode) ? AppColors.cardLight : AppColors.cardDark),
+            foregroundColor: MaterialStateProperty.all<Color>(
+              (darkMode) ? AppColors.textDark : AppColors.textLight,
+            ),
+            shape: buttonStyle(),
           ),
-        ));
+          onPressed: () {
+            widget.onTap(index);
+          },
+          child: SizedBox(
+            height: buttonHeight,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(
+                  height: 5,
+                ),
+                Icon(widget.iconData),
+                const SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  widget.label,
+                ),
+              ],
+            ),
+          ),
+        ),
+        vpad,
+      ],
+    );
   }
 }

@@ -1,24 +1,24 @@
 import "package:aftos/pages/standard_page.dart";
 import 'package:flutter/material.dart';
 
-class Feed extends StandardPage {
-  Feed({
+class Friends extends StandardPage {
+  Friends({
     Key? key,
   }) : super(key: key);
 
   @override
   void initData() {
-    title = "Feed";
+    title = "Friends";
     ico = Icons.person;
   }
 
   @override
-  State<Feed> createState() {
-    return FeedState();
+  State<Friends> createState() {
+    return FriendsState();
   }
 }
 
-class FeedState extends State<Feed> {
+class FriendsState extends State<Friends> {
   @override
   Widget build(BuildContext context) {
     return Center(
