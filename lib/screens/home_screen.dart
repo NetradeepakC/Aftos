@@ -1,10 +1,11 @@
 import 'package:aftos/navigation.dart';
 import 'package:aftos/pages/pages.dart';
-import 'package:aftos/theme.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+
+  final ValueNotifier<int> pageIndex = ValueNotifier(0);
 
   final pages = [
     Chats(),
@@ -21,26 +22,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  int i = 0;
+  int currentScreen = 0;
 
   @override
   Widget build(BuildContext context) {
     for (var i in widget.pages) {
       i.initData();
     }
-    ThemeData mode = Theme.of(context);
-    bool darkMode = mode.brightness == Brightness.dark;
+    // ThemeData mode = Theme.of(context);
+    // bool darkMode = mode.brightness == Brightness.dark;
+    setState(() {});
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: (darkMode) ? AppColors.cardLight : AppColors.cardDark,
-        foregroundColor: (darkMode) ? AppColors.textDark : AppColors.textLight,
-        title: const Center(child: Text("Aftos")),
+      body: ValueListenableBuilder(
+        valueListenable: widget.pageIndex,
+        builder: (BuildContext context, int value, _) {
+          return widget.pages[value];
+        },
       ),
-      body: widget.pages[i],
       bottomNavigationBar: BottomNavBar(
         onButtonPressed: (index) {
-          i = index;
-          setState(() {});
+          currentScreen = index;
+          widget.pageIndex.value = index;
         },
         labelList: widget.pages.map((x) {
           return x.title;

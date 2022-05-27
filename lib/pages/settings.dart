@@ -1,4 +1,5 @@
 import "package:aftos/pages/standard_page.dart";
+import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StandardPage {
@@ -21,8 +22,15 @@ class Settings extends StandardPage {
 class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(widget.title),
+    ThemeData mode = Theme.of(context);
+    bool darkMode = mode.brightness == Brightness.dark;
+    return Column(
+      children: [
+        defaultAppBar(darkMode),
+        Center(
+          child: Text(widget.title),
+        ),
+      ],
     );
   }
 }

@@ -1,5 +1,6 @@
 import "package:aftos/pages/standard_page.dart";
-import 'package:flutter/cupertino.dart';
+import 'package:aftos/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 class Chats extends StandardPage {
   Chats({
@@ -9,7 +10,7 @@ class Chats extends StandardPage {
   @override
   void initData() {
     title = "Chats";
-    ico = CupertinoIcons.bubble_left_bubble_right_fill;
+    ico = Icons.local_activity;
   }
 
   @override
@@ -21,8 +22,15 @@ class Chats extends StandardPage {
 class ChatsState extends State<Chats> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(widget.title),
+    ThemeData mode = Theme.of(context);
+    bool darkMode = mode.brightness == Brightness.dark;
+    return Column(
+      children: [
+        defaultAppBar(darkMode),
+        Center(
+          child: Text(widget.title),
+        ),
+      ],
     );
   }
 }

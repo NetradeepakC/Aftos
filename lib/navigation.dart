@@ -1,11 +1,8 @@
 import 'package:aftos/theme.dart';
+import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-const vpadHeight = 5.0;
-const hpadWidth = 30.0;
-const buttonHeight = 53.0;
-
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
     Key? key,
     required this.onButtonPressed,
@@ -13,7 +10,6 @@ class BottomNavBar extends StatelessWidget {
     required this.icoList,
   }) : super(key: key);
 
-  static int i = 0;
   final ValueChanged<int> onButtonPressed;
   final List<String> labelList;
   final List<IconData> icoList;
@@ -32,11 +28,30 @@ class BottomNavBar extends StatelessWidget {
   }
 
   @override
+  State<BottomNavBar> createState() {
+    return BottomNavBarState();
+  }
+}
+
+class BottomNavBarState extends State<BottomNavBar> {
+  int currentChoice = 0;
+
+  void itemSelectionHandler(int index) {
+    currentChoice = index;
+    widget.onButtonPressed(index);
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<Widget> barButtons = [];
-    for (int i = 0; i < labelList.length; i++) {
+    for (int i = 0; i < widget.labelList.length; i++) {
       barButtons.add(NavBarButton(
-          label: labelList[i], iconData: icoList[i], onTap: onButtonPressed));
+          index: i,
+          isSelected: currentChoice == i,
+          label: widget.labelList[i],
+          iconData: widget.icoList[i],
+          onTap: itemSelectionHandler));
     }
     final ThemeData mode = Theme.of(context);
     bool darkMode = mode.brightness == Brightness.dark;
@@ -48,7 +63,7 @@ class BottomNavBar extends StatelessWidget {
           child: Scrollbar(
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: padButtons(barButtons),
+              children: widget.padButtons(barButtons),
             ),
           ),
         ),
@@ -62,6 +77,8 @@ class BottomNavBar extends StatelessWidget {
 class NavBarButton extends StatefulWidget {
   const NavBarButton({
     Key? key,
+    required this.index,
+    required this.isSelected,
     required this.label,
     required this.iconData,
     required this.onTap,
@@ -69,8 +86,10 @@ class NavBarButton extends StatefulWidget {
 
   final String label; //Text under the icon
   final IconData iconData; //Icon
+  final int index;
   final ValueChanged<int>
       onTap; //Allows a parent to select a function to execute by the child widget
+  final bool isSelected;
 
   @override
   State<NavBarButton> createState() {
@@ -79,18 +98,8 @@ class NavBarButton extends StatefulWidget {
 }
 
 class NavBarButtonState extends State<NavBarButton> {
-  static int maxIndex = 0;
-  int index = -1;
-  bool firstLoad = true;
-
   @override
   Widget build(BuildContext context) {
-    if (firstLoad) //Instructions that only need to run once and not every hot reload
-    {
-      index = maxIndex++;
-      firstLoad = false;
-      setState(() {});
-    }
     ThemeData mode = Theme.of(context);
     bool darkMode = mode.brightness == Brightness.dark;
     SizedBox vpad = const SizedBox(height: vpadHeight);
@@ -98,16 +107,9 @@ class NavBarButtonState extends State<NavBarButton> {
       children: [
         vpad,
         ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                (darkMode) ? AppColors.cardLight : AppColors.cardDark),
-            foregroundColor: MaterialStateProperty.all<Color>(
-              (darkMode) ? AppColors.textDark : AppColors.textLight,
-            ),
-            shape: buttonStyle(),
-          ),
+          style: defaultButtonStyle(darkMode, inverter: widget.isSelected),
           onPressed: () {
-            widget.onTap(index);
+            widget.onTap(widget.index);
           },
           child: SizedBox(
             height: buttonHeight,

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const vpadHeight = 5.0;
+const hpadWidth = 30.0;
+const buttonHeight = 53.0;
+
 abstract class AppColors {
   static const secondary = Color(0xFF3B76F6);
   static const accent = Color(0xFFD6755B);
@@ -22,26 +26,6 @@ abstract class _LightColors {
 abstract class _DarkColors {
   static const background = Color(0xFF1B1E1F);
   static const card = AppColors.cardDark;
-}
-
-defaultTextStyle(BuildContext context) {
-  ThemeData mode = Theme.of(context);
-  bool darkMode = mode.brightness == Brightness.dark;
-  return TextStyle(color: darkMode ? AppColors.textLight : AppColors.textDark);
-}
-
-defaultText(BuildContext context, String str) {
-  return Text(
-    str,
-    style: defaultTextStyle(context),
-  );
-}
-
-buttonStyle() {
-  return MaterialStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(18.0),
-  ));
 }
 
 /// Reference to the application theme.

@@ -1,4 +1,5 @@
 import "package:aftos/pages/standard_page.dart";
+import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Groups extends StandardPage {
@@ -21,8 +22,15 @@ class Groups extends StandardPage {
 class GroupsState extends State<Groups> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(widget.title),
+    ThemeData mode = Theme.of(context);
+    bool darkMode = mode.brightness == Brightness.dark;
+    return Column(
+      children: [
+        defaultAppBar(darkMode),
+        Center(
+          child: Text(widget.title),
+        ),
+      ],
     );
   }
 }
