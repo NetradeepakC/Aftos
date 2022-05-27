@@ -1,4 +1,5 @@
-export 'activities.dart';
-export 'contrast.dart';
-export 'people.dart';
-export 'settings.dart';
+export 'chats.dart';
+export 'events.dart';
+export 'feed.dart';
+export 'groups.dart';
+export 'standard_page.dart';
