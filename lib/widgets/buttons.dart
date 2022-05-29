@@ -1,4 +1,5 @@
 import 'package:aftos/theme.dart';
+import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 defaultButtonStyle(bool darkMode, {bool inverter = false}) {
@@ -15,20 +16,6 @@ defaultButtonStyle(bool darkMode, {bool inverter = false}) {
   );
 }
 
-padAppBar(List<Widget> widList) {
-  SizedBox hpad = const SizedBox(
-    width: 5,
-  );
-  List<Widget> widlistNew = [];
-  for (Widget i in widList) {
-    if (i != null) {
-      widlistNew.add(i);
-      widlistNew.add(hpad);
-    }
-  }
-  return widlistNew;
-}
-
 defaultAppBar(bool darkMode, {List<ElevatedButton> extraButtons = const []}) {
   return AppBar(
     backgroundColor: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
@@ -37,13 +24,15 @@ defaultAppBar(bool darkMode, {List<ElevatedButton> extraButtons = const []}) {
     actions: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: padAppBar(extraButtons +
-            [
-              ElevatedButton(
-                  style: defaultButtonStyle(darkMode),
-                  onPressed: () {},
-                  child: const Icon(Icons.search_rounded)),
-            ]),
+        children: hpadWidgetList(
+            extraButtons +
+                [
+                  ElevatedButton(
+                      style: defaultButtonStyle(darkMode),
+                      onPressed: () {},
+                      child: const Icon(Icons.search_rounded)),
+                ],
+            width: 5),
       ),
     ],
   );

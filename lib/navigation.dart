@@ -14,19 +14,6 @@ class BottomNavBar extends StatefulWidget {
   final List<String> labelList;
   final List<IconData> icoList;
 
-  List<Widget> padButtons(List<Widget> barButtons) {
-    List<Widget> newList = [];
-    SizedBox hpad = const SizedBox(
-      width: hpadWidth,
-    );
-    for (Widget i in barButtons) {
-      newList.add(hpad);
-      newList.add(i);
-    }
-    newList.add(hpad);
-    return newList;
-  }
-
   @override
   State<BottomNavBar> createState() {
     return BottomNavBarState();
@@ -63,7 +50,7 @@ class BottomNavBarState extends State<BottomNavBar> {
           child: Scrollbar(
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: widget.padButtons(barButtons),
+              children: hpadWidgetList(barButtons, startPad: true),
             ),
           ),
         ),
@@ -102,10 +89,8 @@ class NavBarButtonState extends State<NavBarButton> {
   Widget build(BuildContext context) {
     ThemeData mode = Theme.of(context);
     bool darkMode = mode.brightness == Brightness.dark;
-    SizedBox vpad = const SizedBox(height: vpadHeight);
     return Column(
-      children: [
-        vpad,
+      children: vpadWidgetList([
         ElevatedButton(
           style: defaultButtonStyle(darkMode, inverter: widget.isSelected),
           onPressed: () {
@@ -130,8 +115,7 @@ class NavBarButtonState extends State<NavBarButton> {
             ),
           ),
         ),
-        vpad,
-      ],
+      ], startPad: true, height: vpadHeight),
     );
   }
 }

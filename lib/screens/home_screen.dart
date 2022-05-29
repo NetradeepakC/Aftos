@@ -29,8 +29,6 @@ class HomeScreenState extends State<HomeScreen> {
     for (var i in widget.pages) {
       i.initData();
     }
-    // ThemeData mode = Theme.of(context);
-    // bool darkMode = mode.brightness == Brightness.dark;
     setState(() {});
     return Scaffold(
       body: ValueListenableBuilder(

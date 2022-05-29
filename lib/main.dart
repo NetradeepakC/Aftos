@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:aftos/screens/screens.dart';
 import 'package:aftos/theme.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());

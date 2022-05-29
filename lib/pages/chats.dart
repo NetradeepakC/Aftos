@@ -1,5 +1,6 @@
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Chats extends StandardPage {
@@ -10,7 +11,7 @@ class Chats extends StandardPage {
   @override
   void initData() {
     title = "Chats";
-    ico = Icons.local_activity;
+    ico = CupertinoIcons.bubble_left_bubble_right_fill;
   }
 
   @override
