@@ -1,6 +1,13 @@
 import 'package:aftos/theme.dart';
 import 'package:flutter/material.dart';
 
+SizedBox hpad = const SizedBox(
+  width: hpadWidth,
+);
+SizedBox vpad = const SizedBox(
+  height: vpadHeight,
+);
+
 List<Widget> hpadWidgetList(List<Widget> widList,
     {double width = hpadWidth, bool startPad = false}) {
   SizedBox hpad = SizedBox(

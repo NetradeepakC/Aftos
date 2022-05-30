@@ -3,6 +3,8 @@ import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
+
 class Chats extends StandardPage {
   Chats({
     Key? key,
@@ -28,8 +30,25 @@ class ChatsState extends State<Chats> {
     return Column(
       children: [
         defaultAppBar(darkMode),
-        Center(
-          child: Text(widget.title),
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: const [
+                  SizedBox(
+                    height: vpadHeight,
+                  ),
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Text("Random Person"),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ],
     );
