@@ -44,25 +44,35 @@ class ChatsState extends State<Chats> {
                 padding: const EdgeInsets.all(5),
                 child: ElevatedButton(
                   onPressed: () {},
+                  style: defaultButtonStyle(darkMode),
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
                       children: [
-                        Text(
-                          randomName(),
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(fontSize: 17),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              randomName(),
+                              overflow: TextOverflow.fade,
+                              style: const TextStyle(fontSize: 17),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style:
+                                  defaultButtonStyle(darkMode, inverter: true),
+                              child: const Icon(Icons.pin_drop_outlined),
+                            ),
+                          ],
                         ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Icon(Icons.pin_drop_outlined),
-                          style: defaultButtonStyle(darkMode, inverter: true),
+                        vpad,
+                        const Text(
+                          "Things you have in common:",
+                          style: TextStyle(fontSize: 16),
                         ),
                       ],
                     ),
                   ),
-                  style: defaultButtonStyle(darkMode),
                 ),
               );
             },
