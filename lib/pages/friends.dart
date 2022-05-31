@@ -27,12 +27,15 @@ class FriendsState extends State<Friends> {
     bool darkMode = mode.brightness == Brightness.dark;
     return Column(
       children: [
-        defaultAppBar(darkMode, extraButtons: [
-          ElevatedButton(
-              style: defaultButtonStyle(darkMode),
-              onPressed: () {},
-              child: const Icon(Icons.favorite_rounded))
-        ]),
+        defaultAppBar(
+          darkMode,
+          extraButtons: [
+            ElevatedButton(
+                style: defaultButtonStyle(darkMode),
+                onPressed: () {},
+                child: const Icon(Icons.favorite_rounded))
+          ],
+        ),
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.vertical,
@@ -50,6 +53,7 @@ class FriendsState extends State<Friends> {
                         const Text(
                           "Friend",
                           style: TextStyle(fontSize: 17),
+                          overflow: TextOverflow.fade,
                         ),
                       ],
                     ),
