@@ -20,8 +20,6 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark(ThemeData(
         primarySwatch: Colors.blue,
       )),
-      //Uncomment the below line to override the system default
-      //themeMode: ThemeMode.dark,
       home: HomeScreen(),
     );
   }

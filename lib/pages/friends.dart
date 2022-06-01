@@ -35,7 +35,7 @@ class FriendsState extends State<Friends> {
                 child: const Icon(Icons.favorite_rounded))
           ],
         ),
-        Expanded(
+        Flexible(
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {

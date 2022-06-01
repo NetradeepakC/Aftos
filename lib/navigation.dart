@@ -50,7 +50,7 @@ class BottomNavBarState extends State<BottomNavBar> {
         color: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
         child: SizedBox(
           height: buttonHeight + 2 * vpadHeight,
-          child: CupertinoScrollbar(
+          child: Scrollbar(
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: hpadWidgetList(barButtons, startPad: true),
