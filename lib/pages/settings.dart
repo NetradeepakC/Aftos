@@ -23,7 +23,6 @@ class Settings extends StandardPage {
 class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    String ranpic = Helpers.randomPictureUrl();
     setState(() {});
     return Column(
       children: vpadWidgetList(
@@ -33,7 +32,7 @@ class SettingsState extends State<Settings> {
             height: 10,
           ),
           Avatar(
-            url: ranpic,
+            url: Helpers.randomPictureUrl(),
             radius: 50,
           ),
           const SizedBox(

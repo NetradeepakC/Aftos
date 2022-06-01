@@ -6,16 +6,16 @@ const hpadWidth = 30.0;
 const buttonHeight = 53.0;
 
 abstract class AppColors {
-  static const secondary = Color(0xFF3B76F6);
+  static const secondary = Color(0xFFF05454);
   static const accent = Color(0xFFD6755B);
-  static const textDark = Color(0xFF53585A);
+  static const textDark = Color(0xFF121212);
   static const textLight = Color(0xFFF5F5F5);
   static const textFaded = Color(0xFF9899A5);
   static const iconLight = Color(0xFFB1B4C0);
   static const iconDark = Color(0xFFB1B3C1);
   static const textHighlight = secondary;
-  static const cardLight = Color(0xFFF9FAFE);
-  static const cardDark = Color(0xFF303334);
+  static const cardLight = Color(0xFF5F9AC7);
+  static const cardDark = Color(0xFF0D2E47);
 }
 
 abstract class _LightColors {

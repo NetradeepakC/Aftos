@@ -1,4 +1,3 @@
-import 'package:aftos/helpers.dart';
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -40,27 +39,7 @@ class FriendsState extends State<Friends> {
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(5),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Avatar.large(url: Helpers.randomPictureUrl()),
-                        hpad,
-                        const Text(
-                          "Friend",
-                          style: TextStyle(fontSize: 17),
-                          overflow: TextOverflow.fade,
-                        ),
-                      ],
-                    ),
-                  ),
-                  style: defaultButtonStyle(darkMode),
-                ),
-              );
+              return const FriendCard();
             },
           ),
         ),

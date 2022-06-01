@@ -1,6 +1,8 @@
+import 'package:aftos/helpers.dart';
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+// TODO: Learn slivers
 
 class Events extends StandardPage {
   Events({
@@ -32,8 +34,15 @@ class EventsState extends State<Events> {
               onPressed: () {},
               child: const Icon(Icons.star_border_rounded))
         ]),
-        Center(
-          child: Text(widget.title),
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              return EventCard(
+                url: Helpers.randomPictureUrl(),
+              );
+            },
+          ),
         ),
       ],
     );
