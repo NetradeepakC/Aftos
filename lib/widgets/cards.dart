@@ -28,10 +28,18 @@ class EventCard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(18.0),
-                child: Image(
-                  image: CachedNetworkImageProvider(url!),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: darkMode ? AppColors.textDark : AppColors.textLight,
+                  ),
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18.0),
+                  child: Image(
+                    image: CachedNetworkImageProvider(url!),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -102,10 +110,11 @@ class ChatCard extends StatelessWidget {
                     ],
                   ),
                   vpad,
-                  const Divider(
+                  Divider(
                     thickness: 1,
                     endIndent: 0,
-                    color: Colors.black,
+                    color:
+                        (darkMode) ? AppColors.textDark : AppColors.textLight,
                   ),
                   const Text(
                     "Things you have in common:",
@@ -154,16 +163,21 @@ class FriendCard extends StatelessWidget {
                       ),
                       overflow: TextOverflow.fade,
                     ),
+                    vpad,
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(),
+                        border: Border.all(
+                          color: darkMode
+                              ? AppColors.textDark
+                              : AppColors.textLight,
+                        ),
                         borderRadius: BorderRadius.circular(18.0),
                       ),
-                      padding: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(6),
                       child: Text(
                         "You: ${randomName()} ${randomName()} ${randomName()} ${randomName()} ${randomName()}",
                         overflow: TextOverflow.fade,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       ),
                     ),
                   ],

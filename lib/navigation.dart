@@ -1,6 +1,5 @@
 import 'package:aftos/theme.dart';
 import 'package:aftos/widgets/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -50,11 +49,9 @@ class BottomNavBarState extends State<BottomNavBar> {
         color: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
         child: SizedBox(
           height: buttonHeight + 2 * vpadHeight,
-          child: Scrollbar(
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: hpadWidgetList(barButtons, startPad: true),
-            ),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: hpadWidgetList(barButtons, startPad: true),
           ),
         ),
       ),
