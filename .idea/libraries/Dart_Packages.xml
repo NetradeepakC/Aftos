@@ -110,7 +110,7 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$USER_HOME$/flutter/packages/flutter/lib" />
+              <option value="/opt/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>
@@ -138,7 +138,7 @@
         <entry key="flutter_test">
           <value>
             <list>
-              <option value="$USER_HOME$/flutter/packages/flutter_test/lib" />
+              <option value="/opt/flutter/packages/flutter_test/lib" />
             </list>
           </value>
         </entry>
@@ -292,7 +292,7 @@
         <entry key="sky_engine">
           <value>
             <list>
-              <option value="$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib" />
+              <option value="/opt/flutter/bin/cache/pkg/sky_engine/lib" />
             </list>
           </value>
         </entry>
@@ -450,9 +450,9 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/win32-2.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1/lib" />
-      <root url="file://$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib" />
-      <root url="file://$USER_HOME$/flutter/packages/flutter/lib" />
-      <root url="file://$USER_HOME$/flutter/packages/flutter_test/lib" />
+      <root url="file:///opt/flutter/bin/cache/pkg/sky_engine/lib" />
+      <root url="file:///opt/flutter/packages/flutter/lib" />
+      <root url="file:///opt/flutter/packages/flutter_test/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
