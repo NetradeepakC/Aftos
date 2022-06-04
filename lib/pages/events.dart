@@ -2,6 +2,7 @@ import 'package:aftos/helpers.dart';
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:aftos/cards/card.dart';
 // TODO: Learn slivers
 
 class Events extends StandardPage {

@@ -2,6 +2,7 @@ import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:aftos/cards/card.dart';
 
 class Chats extends StandardPage {
   Chats({
@@ -33,7 +34,7 @@ class ChatsState extends State<Chats> {
             ElevatedButton(
                 style: defaultButtonStyle(darkMode),
                 onPressed: () {},
-                child: const Icon(Icons.push_pin)),
+                child: const Icon(Icons.bookmark)),
           ],
         ),
         Expanded(

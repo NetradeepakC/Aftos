@@ -23,20 +23,51 @@ class Settings extends StandardPage {
 class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    setState(() {});
+    bool darkMode = isDark(context);
     return Column(
       children: vpadWidgetList(
         [
           defaultAppBar(isDark(context)),
-          const SizedBox(
-            height: 10,
-          ),
+          vpad,
           Avatar(
             url: Helpers.randomPictureUrl(),
             radius: 50,
           ),
-          const SizedBox(
-            height: 10,
+          vpad,
+          ElevatedButton(
+            onPressed: () {},
+            style: defaultButtonStyle(darkMode),
+            child: const Text(
+              "Account Details",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          vpad,
+          ElevatedButton(
+            onPressed: () {},
+            style: defaultButtonStyle(darkMode),
+            child: const Text(
+              "Notifications",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          vpad,
+          ElevatedButton(
+            onPressed: () {},
+            style: defaultButtonStyle(darkMode),
+            child: const Text(
+              "Storage",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          vpad,
+          ElevatedButton(
+            onPressed: () {},
+            style: defaultButtonStyle(darkMode),
+            child: const Text(
+              "Invite Someone",
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ],
       ),
