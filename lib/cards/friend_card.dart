@@ -21,7 +21,6 @@ class FriendCard extends StatelessWidget {
               Avatar.large(url: Helpers.randomPictureUrl()),
               hpad,
               Expanded(
-                //width: 150,
                 child: Column(
                   children: [
                     Text(

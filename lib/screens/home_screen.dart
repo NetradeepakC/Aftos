@@ -8,10 +8,11 @@ class HomeScreen extends StatefulWidget {
   final ValueNotifier<int> pageIndex = ValueNotifier(0);
 
   final pages = [
-    Chats(),
-    Events(),
-    Friends(),
-    Groups(),
+    ChatList(),
+    EventList(),
+    FriendList(),
+    GroupList(),
+    CommunityList(),
     Settings(),
   ];
 

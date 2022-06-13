@@ -1,47 +1,47 @@
+import 'package:aftos/helpers.dart';
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aftos/cards/card.dart';
+// TODO: Learn slivers
 
-class Chats extends StandardPage {
-  Chats({
+class EventList extends StandardPage {
+  EventList({
     Key? key,
   }) : super(key: key);
 
   @override
   void initData() {
-    title = "Chats";
-    ico = CupertinoIcons.bubble_left_bubble_right_fill;
+    title = "Events";
+    ico = Icons.local_activity;
   }
 
   @override
-  State<Chats> createState() {
-    return ChatsState();
+  State<EventList> createState() {
+    return EventListState();
   }
 }
 
-class ChatsState extends State<Chats> {
+class EventListState extends State<EventList> {
   @override
   Widget build(BuildContext context) {
     ThemeData mode = Theme.of(context);
     bool darkMode = mode.brightness == Brightness.dark;
     return Column(
       children: [
-        defaultAppBar(
-          darkMode,
-          extraButtons: [
-            ElevatedButton(
-                style: defaultButtonStyle(darkMode),
-                onPressed: () {},
-                child: const Icon(Icons.bookmark)),
-          ],
-        ),
+        defaultAppBar(darkMode, extraButtons: [
+          ElevatedButton(
+              style: defaultButtonStyle(darkMode),
+              onPressed: () {},
+              child: const Icon(Icons.star_border_rounded))
+        ]),
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              return const ChatCard();
+              return EventCard(
+                url: Helpers.randomPictureUrl(),
+              );
             },
           ),
         ),

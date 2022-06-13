@@ -58,6 +58,7 @@ class ChatCard extends StatelessWidget {
                     color:
                         (darkMode) ? AppColors.textDark : AppColors.textLight,
                   ),
+                  vpad,
                   const Text(
                     "Things you have in common:",
                     style: TextStyle(

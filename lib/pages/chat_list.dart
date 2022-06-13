@@ -1,26 +1,27 @@
 import "package:aftos/pages/standard_page.dart";
 import 'package:aftos/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aftos/cards/card.dart';
 
-class Friends extends StandardPage {
-  Friends({
+class ChatList extends StandardPage {
+  ChatList({
     Key? key,
   }) : super(key: key);
 
   @override
   void initData() {
-    title = "Friends";
-    ico = Icons.person;
+    title = "Chats";
+    ico = CupertinoIcons.bubble_left_bubble_right_fill;
   }
 
   @override
-  State<Friends> createState() {
-    return FriendsState();
+  State<ChatList> createState() {
+    return ChatListState();
   }
 }
 
-class FriendsState extends State<Friends> {
+class ChatListState extends State<ChatList> {
   @override
   Widget build(BuildContext context) {
     ThemeData mode = Theme.of(context);
@@ -33,14 +34,14 @@ class FriendsState extends State<Friends> {
             ElevatedButton(
                 style: defaultButtonStyle(darkMode),
                 onPressed: () {},
-                child: const Icon(Icons.favorite_rounded))
+                child: const Icon(Icons.bookmark)),
           ],
         ),
-        Flexible(
+        Expanded(
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              return const FriendCard();
+              return const ChatCard();
             },
           ),
         ),
