@@ -3,13 +3,11 @@ class EventData {
     required this.id,
     required this.name,
     required this.pictureUrl,
-    required this.commonThings,
-    //required this.difThings,
+    required this.description,
   });
 
-  int id;
-  String name;
-  String pictureUrl;
-  List<int> commonThings;
-//List<int> difThings;
+  final int id;
+  final String name;
+  final String pictureUrl;
+  final String description;
 }
