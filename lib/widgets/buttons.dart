@@ -37,3 +37,19 @@ defaultAppBar(bool darkMode, {List<ElevatedButton> extraButtons = const []}) {
     ],
   );
 }
+
+messageAppBar(bool darkMode, {List<Widget> extraButtons = const []}) {
+  return AppBar(
+    backgroundColor: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
+    foregroundColor: (darkMode) ? AppColors.textLight : AppColors.textDark,
+    title: const Text("Aftos"),
+    actions: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: hpadWidgetList(
+            extraButtons,
+            width: 5),
+      ),
+    ],
+  );
+}

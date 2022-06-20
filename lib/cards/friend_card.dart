@@ -4,7 +4,10 @@ import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class FriendCard extends StatelessWidget {
-  const FriendCard({Key? key}) : super(key: key);
+  const FriendCard({Key? key,
+    required this.url,}) : super(key: key);
+
+  final String? url;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class FriendCard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              Avatar.large(url: Helpers.randomPictureUrl()),
+              Avatar.large(url: url),
               hpad,
               Expanded(
                 child: Column(

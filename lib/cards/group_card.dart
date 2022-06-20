@@ -1,6 +1,6 @@
 import 'package:aftos/theme.dart';
 import 'package:aftos/widgets/widgets.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:aftos/helpers.dart';
 import 'package:flutter/material.dart';
 
 class GroupCard extends StatelessWidget {
@@ -21,65 +21,41 @@ class GroupCard extends StatelessWidget {
         style: defaultButtonStyle(darkMode),
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: Column(
+          child: Row(
             children: [
-              Text(
-                randomName(),
-                overflow: TextOverflow.fade,
-                style: const TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              vpad,
-              Divider(
-                thickness: 1,
-                endIndent: 0,
-                color: (darkMode) ? AppColors.textDark : AppColors.textLight,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: darkMode ? AppColors.textDark : AppColors.textLight,
-                  ),
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(18.0),
-                  child: Image(
-                    image: CachedNetworkImageProvider(url!),
-                  ),
-                ),
-              ),
-              vpad,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: defaultButtonStyle(
-                      darkMode,
-                      inverter: true,
+              Avatar.large(url: Helpers.randomPictureUrl()),
+              hpad,
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      //Name
+                      randomName(),
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.fade,
                     ),
-                    child: const Icon(Icons.thumb_up_alt_outlined),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: defaultButtonStyle(
-                      darkMode,
-                      inverter: true,
+                    vpad,
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: darkMode
+                              ? AppColors.textDark
+                              : AppColors.textLight,
+                        ),
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: Text(
+                        "You: ${randomName()} ${randomName()} ${randomName()} ${randomName()} ${randomName()}",
+                        overflow: TextOverflow.fade,
+                        style: const TextStyle(fontSize: 12),
+                      ),
                     ),
-                    child: const Icon(Icons.thumb_down_alt_outlined),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: defaultButtonStyle(
-                      darkMode,
-                      inverter: true,
-                    ),
-                    child: const Icon(Icons.mode_comment_outlined), //Icon
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

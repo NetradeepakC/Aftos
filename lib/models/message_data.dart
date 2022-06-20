@@ -1,17 +1,15 @@
 class MessageData {
-  MessageData.text({
+  MessageData({
     required this.id,
     required this.from,
-    required this.text,
-  });
-  MessageData.image({
-    required this.id,
-    required this.from,
-    required this.pictureUrl,
+    required this.time,
+    this.text,
+    this.pictureUrl,
   });
 
   final int id;
   final String from;
   String? pictureUrl;
   String? text;
+  final DateTime time;
 }

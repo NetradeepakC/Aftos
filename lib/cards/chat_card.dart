@@ -1,10 +1,18 @@
 import 'dart:math';
+
+import 'package:aftos/models/models.dart';
+import 'package:aftos/screens/screens.dart';
 import 'package:aftos/theme.dart';
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ChatCard extends StatelessWidget {
-  const ChatCard({Key? key}) : super(key: key);
+  const ChatCard({
+    Key? key,
+    required this.messageData,
+  }) : super(key: key);
+
+  final MessageData messageData;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,9 @@ class ChatCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(ChatScreen.route(messageData));
+        },
         style: defaultButtonStyle(darkMode),
         child: Padding(
           padding: const EdgeInsets.all(10),

@@ -12,7 +12,7 @@ class CommunityList extends StandardPage {
   @override
   void initData() {
     title = "Communities";
-    ico = Icons.group;
+    ico = Icons.groups;
   }
 
   @override
@@ -33,7 +33,7 @@ class CommunityListState extends State<CommunityList> {
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              return GroupCard(
+              return CommunityCard(
                 url: Helpers.randomPictureUrl(),
               );
             },
