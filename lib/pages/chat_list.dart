@@ -49,7 +49,8 @@ class ChatListState extends State<ChatList> {
                 messageData: MessageData(
                     id: 0,
                     from: (random.nextBool()) ? "You" : "Them",
-                    time: DateTime.now(),
+                    time: DateTime.now()
+                        .subtract(Duration(seconds: random.nextInt(200000))),
                     text:
                         "${randomName()} ${randomName()} ${randomName()} ${randomName()}"),
               );

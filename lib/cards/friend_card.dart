@@ -1,21 +1,30 @@
-import 'package:aftos/helpers.dart';
+import 'package:aftos/models/models.dart';
+import 'package:aftos/screens/screens.dart';
 import 'package:aftos/theme.dart';
 import 'package:aftos/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class FriendCard extends StatelessWidget {
-  const FriendCard({Key? key,
-    required this.url,}) : super(key: key);
+  const FriendCard({
+    Key? key,
+    required this.url,
+    required this.messageData,
+  }) : super(key: key);
 
   final String? url;
+  final MessageData messageData;
 
   @override
   Widget build(BuildContext context) {
     bool darkMode = isDark(context);
+    String name = randomName();
     return Padding(
       padding: const EdgeInsets.all(5),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(ChatScreen.route(messageData, name, pictureURL: url));
+        },
         style: defaultButtonStyle(darkMode),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -27,8 +36,7 @@ class FriendCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      //Name
-                      randomName(),
+                      name,
                       style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
@@ -47,7 +55,9 @@ class FriendCard extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(6),
                       child: Text(
-                        "You: ${randomName()} ${randomName()} ${randomName()} ${randomName()} ${randomName()}",
+                        (messageData.pictureUrl == null)
+                            ? "${messageData.from}: ${messageData.text}"
+                            : "${messageData.from}: Image",
                         overflow: TextOverflow.fade,
                         style: const TextStyle(fontSize: 12),
                       ),

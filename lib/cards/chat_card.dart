@@ -21,6 +21,7 @@ class ChatCard extends StatelessWidget {
     final random = Random();
     int n = 1 + random.nextInt(5);
     commonThings.add(vpad);
+    String name = randomName();
     for (int i = 0; i < n; i++) {
       commonThings.add(
         Text(
@@ -36,7 +37,7 @@ class ChatCard extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(ChatScreen.route(messageData));
+          Navigator.of(context).push(ChatScreen.route(messageData, name));
         },
         style: defaultButtonStyle(darkMode),
         child: Padding(
@@ -46,7 +47,7 @@ class ChatCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        randomName(),
+                        name,
                         overflow: TextOverflow.fade,
                         style: const TextStyle(
                           fontSize: 19,

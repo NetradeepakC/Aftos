@@ -1,10 +1,10 @@
 import 'package:aftos/theme.dart';
 import 'package:flutter/material.dart';
 
-SizedBox hpad = const SizedBox(
+const SizedBox hpad = SizedBox(
   width: hpadWidth,
 );
-SizedBox vpad = const SizedBox(
+const SizedBox vpad = SizedBox(
   height: vpadHeight,
 );
 
@@ -34,7 +34,7 @@ List<Widget> vpadWidgetList(List<Widget> widList,
   return widlistNew;
 }
 
-isDark(BuildContext context) {
+bool isDark(BuildContext context) {
   ThemeData mode = Theme.of(context);
   bool darkMode = mode.brightness == Brightness.dark;
   return darkMode;

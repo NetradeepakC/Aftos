@@ -38,17 +38,27 @@ defaultAppBar(bool darkMode, {List<ElevatedButton> extraButtons = const []}) {
   );
 }
 
-messageAppBar(bool darkMode, {List<Widget> extraButtons = const []}) {
+messageAppBar(bool darkMode, String name,
+    {List<Widget> extraButtons = const [], String? pictureURL}) {
+  List<Widget> title = [];
+  SizedBox hpad = const SizedBox(
+    width: 15,
+  );
+  if (pictureURL != null) {
+    title.add(Avatar.small(url: pictureURL));
+    title.add(hpad);
+  }
+  title.add(Text(name));
   return AppBar(
     backgroundColor: (darkMode) ? AppColors.cardDark : AppColors.cardLight,
     foregroundColor: (darkMode) ? AppColors.textLight : AppColors.textDark,
-    title: const Text("Aftos"),
+    title: Row(
+      children: title,
+    ),
     actions: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: hpadWidgetList(
-            extraButtons,
-            width: 5),
+        children: hpadWidgetList(extraButtons, width: 5),
       ),
     ],
   );

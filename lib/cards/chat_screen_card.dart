@@ -17,8 +17,11 @@ class ChatScreenCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5),
         child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          ),
           child: Padding(
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Text("${messageData.from}: "),
